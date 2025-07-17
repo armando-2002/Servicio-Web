@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-    "dev": "nodemon src/index.js"
-  },
+"scripts": {
+  "dev": "nodemon --exitcrash src/index.js",
+  "start": "node src/index.js"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/armando-2002/Servicio-Web.git"
@@ -26,4 +27,5 @@
     "@prisma/client": "^6.12.0",
     "express": "^5.1.0"
   }
+  
 }
