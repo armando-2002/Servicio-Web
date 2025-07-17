@@ -1,4 +1,19 @@
-import { PrismaClient } from "../node_modules/@prisma/client";
+/*import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();*/
 
+/*import { PrismaClient } from '@prisma/client'
 
-export const prisma = new PrismaClient();
+// Solución para Node.js v22 + ES Modules
+const prisma = new PrismaClient({
+  __internal: {
+    engine: {
+      enableEngine: false
+    }
+  }
+})
+
+export default prisma*/
+
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+export default prisma;
