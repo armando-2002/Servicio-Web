@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-"scripts": {
-  "dev": "nodemon --exitcrash src/index.js",
-  "start": "node src/index.js"
-},
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "scripts": {
+    "dev": "nodemon --exitcrash src/index.js",
+    "start": "node src/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/armando-2002/Servicio-Web.git"
