@@ -23,10 +23,18 @@ export const postFactura = async (factura) => {
 };
 
 export async function getClientes() {
-  const response = await fetch('http://localhost:3000/api/clientes');
-  if (!response.ok) {
-    throw new Error('Error al obtener clientes');
-  }
-  return response.json();
+  const res = await fetch('http://localhost:3000/api/clientes');
+  if (!res.ok) throw new Error('Error al obtener clientes');
+  return res.json();
+}
+
+export async function crearCliente(data) {
+  const res = await fetch('http://localhost:3000/api/clientes', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('Error al crear cliente');
+  return res.json();
 }
 
