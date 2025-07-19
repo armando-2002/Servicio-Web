@@ -1,0 +1,95 @@
+/* Reset y fuentes */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1b1b1b;
+  color: white;
+}
+
+a {
+  color: #ffc107;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #fff;
+}
+
+/* Barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #121212;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.logo {
+  font-size: 1.8rem;
+}
+
+/* Contenido principal */
+.content {
+  padding: 2rem;
+}
+
+/* Estilo bienvenida */
+.welcome {
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 3rem;
+}
+
+/* Botones, formularios, tablas, etc. para páginas internas */
+button, input, select {
+  padding: 0.6rem 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #ffc107;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #e0a800;
+}
+
+input, select {
+  width: 100%;
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+.error {
+  color: #ff4c4c;
+  margin-top: 0.3rem;
+}
+
+.success {
+  color: #4caf50;
+  margin-top: 0.3rem;
+}
