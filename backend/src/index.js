@@ -29,6 +29,7 @@ app.listen(PORT, () => {
   console.log(`https://localhost:${PORT}`)
 });*/
 import express from "express";
+import cors from "cors";  //importar cors
 import clienteR from "./routes/cliente-rt.js";
 import facturaR from "./routes/factura-rt.js";
 import menuR from "./routes/menu-rt.js";
@@ -41,7 +42,7 @@ import prisma from "./db.js"; // Importa Prisma para manejar la conexión
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
+app.use(cors()); //usar cors  
 // Middlewares
 app.use(express.json());
 
