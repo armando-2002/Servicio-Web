@@ -6,7 +6,7 @@ export const getBills = async (req, res) => {
 };
 
 export const getBill = async (req, res) => {
-  const id = req.params.id;
+  const id =  parseInt(req.params.id, 10);
   const bill = await prisma.factura.findUnique({
     where: {
       id: id
@@ -33,7 +33,7 @@ export const createBill = async (req, res) => {
 };
 
 export const updateBill = async (req, res) => {
-  const id = req.params.id;
+  const id =  parseInt(req.params.id, 10);
   const data = req.body;
   const updBill = await prisma.factura.update({
     where: {
@@ -51,7 +51,7 @@ export const updateBill = async (req, res) => {
 };
 
 export const deleteBill = async (req, res) => {
-  const id = req.params.id;
+  const id =  parseInt(req.params.id, 10);
   await prisma.factura.delete({
     where: {
       id: id

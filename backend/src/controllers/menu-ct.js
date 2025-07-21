@@ -6,7 +6,7 @@ export const getMenus = async (req, res) => {
 };
 
 export const getMenu = async (req, res) => {
-  const id = req.params.id;
+  const id =  parseInt(req.params.id, 10);
   const menu = await prisma.menu.findUnique({
     where: {
       id: id
@@ -27,7 +27,7 @@ export const createMenu = async (req, res) => {
 };
 
 export const updateMenu = async (req, res) => {
-  const id = req.params.id;
+  const id =  parseInt(req.params.id, 10);
   const data = req.body;
   const updMenu = await prisma.menu.update({
     where: {
@@ -42,7 +42,7 @@ export const updateMenu = async (req, res) => {
 };
 
 export const deleteMenu = async (req, res) => {
-  const id = req.params.id;
+  const id =  parseInt(req.params.id, 10);
   await prisma.menu.delete({
     where: {
       id: id
