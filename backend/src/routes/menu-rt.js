@@ -1,6 +1,5 @@
 import { Router } from "express";
 import * as MenuCt from "../controllers/menu-ct.js"
-import * as MenuCt from "../controllers/menu-ct";
 const router = Router();
 
 /**
