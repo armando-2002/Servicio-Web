@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Menu {
+  id          Int       @id @default(autoincrement())
+  nombre      String
+  precio      Float
+  estado      Boolean
+  categoria   Categoria
+  descripcion String?
+
+  pedido Pedido[]
+}
+
+model Cliente {
+  id       Int    @id
+  nombre   String
+  telefono String @unique
+
+  reserva Reserva[]
+  factura Factura[]
+}
+
+model Mesa {
+  id             Int     @id @default(autoincrement())
+  capacidad      Int
+  disponibilidad Boolean
+  descripcion    String?
+
+  reserva Reserva[]
+}
+
+model Reserva {
+  id           Int           @id @default(autoincrement())
+  id_cliente   Int
+  id_mesa      Int
+  fecha        DateTime
+  num_personas Int
+  estado       EstadoReserva
+
+  cliente_rel Cliente @relation(fields: [id_cliente], references: [id])
+  mesa_rel    Mesa    @relation(fields: [id_mesa], references: [id])
+}
+
+model Factura {
+  id           Int   @id @default(autoincrement())
+  id_cliente   Int
+  precio_final Float
+
+  pedidos     Pedido[]
+  cliente_rel Cliente  @relation(fields: [id_cliente], references: [id])
+}
+
+model Pedido {
+  id         Int @id @default(autoincrement())
+  id_factura Int
+  id_menu    Int
+
+  menu_rel    Menu    @relation(fields: [id_menu], references: [id])
+  factura_rel Factura @relation(fields: [id_factura], references: [id])
+}
+
+enum Categoria {
+  Entrada
+  Principal
+  Postre
+  Bebida
+  Guarnicion
+  Especialidad
+}
+
+enum EstadoReserva {
+  Confirmada
+  Cancelada
+  Completada
+}
