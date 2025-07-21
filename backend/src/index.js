@@ -1,33 +1,4 @@
-/*import express from "express";
 
-import clienteR from "./routes/cliente-rt.js"; // Importaciones de archivos propios incluyen la extension .js
-import facturaR from "./routes/factura-rt.js";
-import menuR from "./routes/menu-rt.js";
-import mesaR from "./routes/mesa-rt.js";
-import pedidoR from "./routes/pedido-rt.js";
-import reservaR from "./routes/reserva-rt.js";
-import prisma from "./db.js"; // Importa Prisma para manejar la conexión
-
-if (!process.env.PORT) {
-    process.exit(1);
-}
-const PORT = parseInt(process.env.PORT, 10);
-
-const app = express();
-
-app.use(express.json());
-
-app.use("/api/client", clienteR);
-app.use("/api/bill", facturaR);
-app.use("/api/menu", menuR);
-app.use("/api/table", mesaR);
-app.use("/api/order", pedidoR);
-app.use("/api/booking", reservaR);
-
-app.listen(PORT, () => {
-  console.log(`Server en el puerto ${PORT}`);
-  console.log(`https://localhost:${PORT}`)
-});*/
 import express from "express";
 import cors from "cors";  //importar cors
 import clienteR from "./routes/cliente-rt.js";
@@ -42,7 +13,13 @@ import prisma from "./db.js"; // Importa Prisma para manejar la conexión
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-app.use(cors()); //usar cors  
+//app.use(cors()); //usar cors  
+const corsOptions = {
+  origin: ['http://localhost:5173'], // Reemplaza con tus URLs
+  methods: ['GET', 'POST', 'PUT', 'DELETE',],
+  credentials: true, // Si usas cookies o autenticación
+};
+app.use(cors(corsOptions));
 // Middlewares
 app.use(express.json());
 

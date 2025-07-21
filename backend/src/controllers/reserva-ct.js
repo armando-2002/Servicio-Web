@@ -1,17 +1,17 @@
 import prisma from "../db.js";
 
-export const reservaController = {
 
-  getAllReservas: async (req, res) => {
+
+  export const getAllReservas= async (req, res) => {
     try {
       const reservas = await prisma.reserva.findMany();
       res.json(reservas);
     } catch (error) {
       res.status(500).json({ error: "Error al obtener las reservas", details: error });
     }
-  },
+  };
 
-  getReservaById: async (req, res) => {
+  export const getReservaById= async (req, res) => {
     const id = parseInt(req.params.id);
     try {
       const reserva = await prisma.reserva.findUnique({
@@ -26,9 +26,9 @@ export const reservaController = {
     } catch (error) {
       res.status(500).json({ error: "Error al obtener la reserva", details: error });
     }
-  },
+  };
 
-  createReserva: async (req, res) => {
+ export const createReserva= async (req, res) => {
     const { id_cliente, id_mesa, fecha, num_personas, estado } = req.body;
     try {
       const reserva = await prisma.reserva.create({
@@ -44,9 +44,9 @@ export const reservaController = {
     } catch (error) {
       res.status(500).json({ error: "Error al crear la reserva", details: error });
     }
-  },
+  };
 
-  updateReserva: async (req, res) => {
+  export const updateReserva=async (req, res) => {
     const id = parseInt(req.params.id);
     const { id_cliente, id_mesa, fecha, num_personas, estado } = req.body;
     try {
@@ -64,9 +64,9 @@ export const reservaController = {
     } catch (error) {
       res.status(400).json({ error: "No se pudo actualizar la reserva.", detalle: error.message });
     }
-  },
+  };
 
-  deleteReserva: async (req, res) => {
+  export const deleteReserva= async (req, res) => {
     const id = parseInt(req.params.id);
     try {
       await prisma.reserva.delete({ where: { id } });
@@ -74,5 +74,5 @@ export const reservaController = {
     } catch (error) {
       res.status(500).json({ error: "Error al eliminar la reserva" });
     }
-  }
+  
 };

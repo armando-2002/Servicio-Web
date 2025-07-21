@@ -1,9 +1,9 @@
 import prisma from "../db.js";
 
 
-export const mesaController = {
 
-  getAllMesas: async (req, res) => {
+
+  export const getAllMesas= async (req, res) => {
     try {
       const mesas = await prisma.mesa.findMany();
       res.json(mesas);
@@ -13,9 +13,10 @@ export const mesaController = {
         details: error.message 
       });
     }
-  },
+  };
 
-  getMesaById: async (req, res) => {
+  
+  export const getMesaById= async (req, res) => {
     const id = parseInt(req.params.id);
     
     if (isNaN(id)) {
@@ -38,9 +39,10 @@ export const mesaController = {
         details: error.message 
       });
     }
-  },
+  };
 
-  createMesa: async (req, res) => {
+  
+  export const createMesa= async (req, res) => {
     const { capacidad, disponibilidad, descripcion } = req.body;
 
     // Validaciones básicas
@@ -77,9 +79,10 @@ export const mesaController = {
         details: error.message 
       });
     }
-  },
+  };
 
-  updateMesa: async (req, res) => {
+  
+  export const updateMesa= async (req, res) => {
     const id = parseInt(req.params.id);
     const { capacidad, disponibilidad, descripcion } = req.body;
 
@@ -128,8 +131,9 @@ export const mesaController = {
         details: error.message 
       });
     }
-  },
-  deleteMesa: async (req, res) => {
+  };
+  
+  export const deleteMesa= async (req, res) => {
     const id = parseInt(req.params.id);
 
     if (isNaN(id)) {
@@ -157,5 +161,5 @@ export const mesaController = {
         details: error.message 
       });
     }
-  }
-};
+  };
+
